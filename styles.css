@@ -1,0 +1,402 @@
+/* ===== RESET BÁSICO ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background: #f9f9f9;
+  color: #333;
+}
+
+/* ===== HEADER E NAVBAR ===== */
+header {
+  background: #fff; /* fundo branco */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 2px;
+  gap: 10px; /* espaço entre logo e texto */
+}
+
+.logo img {
+  height: 60px; /* tamanho fixo da logo */
+  width: auto;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #444;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #ff0000; /* azul destaque no hover */
+        transform: translateY(-5px);  /* efeito flutuante */
+  box-shadow: 0 10px 50px rgba(80, 16, 16, 0.25);
+}
+
+/* ===== DROPDOWN MENU ===== */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #f8f8f8;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  border-radius: 5px;
+  min-width: 180px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+.dropdown-menu li {
+  text-align: left;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.dropdown-menu a:hover {
+  background: #d3d3d3;
+}
+
+/* mantém aberto quando hover no li ou submenu */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* ===== BANNER ===== */
+.banner {
+  background: url("Imagem/Renatao.png") center/cover no-repeat;
+  color: white;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.banner-text {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.banner h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.banner p {
+  font-size: 18px;
+}
+
+/* ===== SEÇÕES ===== */
+section {
+  padding: 60px 20px;
+  text-align: center;
+  border-bottom: 5px solid #004595; /* linha azul */
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+section, footer {
+  margin: 0;
+  padding: 0;
+}
+
+
+h2 {
+  margin-bottom: 20px;
+  color: #004595;
+}
+
+/* ===== CARDS DE NOTÍCIAS ===== */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  width: 280px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* ===== EQUIPE ===== */
+.profissionais {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.profissional img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+
+
+/* ===== RODAPÉ ===== */
+footer {
+  background: #004595;
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+footer .redes a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+}
+
+footer .redes a:hover {
+  text-decoration: underline;
+}
+
+footer .copy {
+  margin-top: 15px;
+  font-size: 14px;
+}
+footer {
+  margin-top: 0;
+}
+
+/* ===== CARROSSEL ===== */
+.carousel {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carousel-item {
+  display: none;
+  text-align: center;
+  animation: fade 1s;
+}
+
+.carousel-item.active {
+  display: block;
+}
+
+.carousel img {
+  width: 100%;
+  border-radius: 10px;
+  max-height: 3500px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.carousel h3 {
+  margin: 10px 0 5px;
+  color: #004595;
+}
+
+.carousel p {
+  font-size: 16px;
+  color: #444;
+}
+
+/* botões */
+.carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.carousel .prev {
+  left: 10px;
+}
+
+.carousel .next {
+  right: 10px;
+}
+
+.carousel button:hover {
+  background: rgba(0,0,0,0.7);
+}
+
+/* animação de transição */
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+/* ==== CARDS ==== */
+.cards-escola {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.card {
+  background: #f7f9fc;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card i {
+  font-size: 40px;
+  color: #004595;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  font-size: 22px;
+  color: #004595;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* ESTILOS DAS DUAS SEÇÕES */
+.sobre-objetivos {
+  display: flex;              /* coloca lado a lado */
+  justify-content: space-between;
+  align-items: flex-start;    /* alinha no topo */
+  gap: 40px;                  /* espaço entre as caixas */
+  margin: 50px auto;
+  max-width: 1200px;
+}
+
+.sobre-objetivos .box {
+  flex: 1;                    /* divide espaço igualmente */
+  padding: 20px;
+}
+
+.sobre-objetivos h2 {
+  color: #004a99;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.sobre-objetivos p, 
+.sobre-objetivos li {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.sobre-objetivos ul {
+  list-style: disc inside;
+  padding-left: 15px;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 🔹 logo à esquerda, menu mais centralizado */
+  padding: 10px 80px;
+}
+
+nav {
+  flex: 1; /* 🔹 ocupa espaço entre logo e canto direito */
+  display: flex;
+  justify-content: center; /* 🔹 centraliza o menu */
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center; /* 🔹 centraliza os itens no meio */
+  gap: 40px; /* 🔹 espaço entre os itens */
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #004080;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+/* Estilo padrão (PC) */
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+  font-size: 18px;
+}
+
+/* Adaptação para telas pequenas (celular) */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
