@@ -134,7 +134,7 @@ header {
 section {
   padding: 60px 20px;
   text-align: center;
-  border-bottom: 5px solid #004595; /* linha azul */
+  border-bottom: 0px solid #004595; /* linha azul */
 }
 
 section:last-of-type {
@@ -376,27 +376,3 @@ nav ul li a {
   font-weight: 500;
   font-size: 16px;
 }
-
-/* Estilo padrão (PC) */
-nav ul {
-  display: flex;
-  justify-content: flex-end;
-  gap: 30px;
-  font-size: 18px;
-}
-
-/* Adaptação para telas pequenas (celular) */
-@media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    gap: 15px;
-    font-size: 16px;
-    text-align: center;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-}
-

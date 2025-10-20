@@ -120,7 +120,7 @@ header {
 section {
   padding: 6px 1px;
   text-align: center;
-  border-bottom: 5px solid #004595;
+  border-bottom: 0px solid #004595;
 }
 
 section:last-of-type {
@@ -305,21 +305,47 @@ nav ul {
   padding: 0;
   margin: 0;
 }
-
-/* Estilo padrão (PC) */
-nav ul {
-  display: flex;
-  justify-content: flex-end;
-  gap: 30px;
-  font-size: 18px;
+/* ====== Estilos Gerais (PC e telas grandes) ====== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
 
-/* Adaptação para telas pequenas (celular) */
+header, nav, section, footer {
+  max-width: 12000px;
+  margin: 0 auto;
+}
+
+/* ====== Responsividade ====== */
+
+/* Tablets e celulares médios (até 992px) */
+@media (max-width: 992px) {
+  nav ul {
+    display: flex;
+    gap: 20px;
+    font-size: 16px;
+  }
+
+  section {
+    padding: 20px;
+  }
+}
+
+/* Celulares (até 768px) */
 @media (max-width: 768px) {
   nav ul {
     flex-direction: column;
+    align-items: center;
     gap: 15px;
-    font-size: 16px;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  section {
+    padding: 15px;
     text-align: center;
   }
 
@@ -329,4 +355,55 @@ nav ul {
   }
 }
 
+/* Celulares pequenos (até 480px) */
+@media (max-width: 480px) {
+  nav ul {
+    font-size: 14px;
+    gap: 10px;
+  }
 
+  h1, h2, h3 {
+    font-size: 1.2em;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  footer {
+    font-size: 12px;
+    text-align: center;
+    padding: 10px;
+  }
+}
+.titulo-novidades {
+  font-size: 2.4rem;
+  color: #003a91;
+  font-weight: 700;
+  position: relative;
+  margin-bottom: 20px;
+}
+.titulo-novidades::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background-color: #006eff;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+.intro-novidades {
+  color: #444;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 850px;
+  margin: 0 auto 60px;
+  text-align: justify;
+}
+
+.novidades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 35px;
+}

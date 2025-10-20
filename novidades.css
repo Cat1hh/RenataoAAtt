@@ -14,7 +14,7 @@ body {
 
 /* ===== HEADER E NAVBAR ===== */
 header {
-  background: #fff;
+  background: #fff; /* fundo branco */
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -28,8 +28,16 @@ header {
   padding: 10px 50px;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 2px;
+  gap: 10px; /* espaço entre logo e texto */
+}
+
 .logo img {
-  height: 60px;
+  height: 60px; /* tamanho fixo da logo */
   width: auto;
 }
 
@@ -37,6 +45,8 @@ header {
   list-style: none;
   display: flex;
   gap: 30px;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links li {
@@ -47,12 +57,12 @@ header {
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
-  color: #004595;
-  transition: 0.3s ease;
+  color: #444;
+  transition: color 0.3s;
 }
 
 .nav-links li a:hover {
-  color: #d30000; /* destaque no hover */
+  color: #ff0000; /* azul destaque no hover */
         transform: translateY(-5px);  /* efeito flutuante */
   box-shadow: 0 10px 50px rgba(80, 16, 16, 0.25);
 }
@@ -63,104 +73,117 @@ header {
   position: absolute;
   top: 100%;
   left: 0;
-  background: #fff;
+  background: #f8f8f8;
   list-style: none;
   padding: 10px 0;
+  margin: 0;
   border-radius: 5px;
   min-width: 180px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+.dropdown-menu li {
+  text-align: left;
 }
 
 .dropdown-menu a {
   display: block;
   padding: 10px 15px;
-  color: #333;
+  color: white;
   text-decoration: none;
+  font-weight: normal;
 }
 
 .dropdown-menu a:hover {
-  background: #f2f2f2;
-  color: #004595;
+  background: #d3d3d3;
 }
 
+/* mantém aberto quando hover no li ou submenu */
 .dropdown:hover .dropdown-menu {
   display: block;
 }
 
 /* ===== BANNER ===== */
 .banner {
-  background: url("Imagem/Matutino.png") center/cover no-repeat;
+  background: url("Imagem/Renatao.png") center/cover no-repeat;
   color: white;
   height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  position: relative;
 }
 
-
 .banner-text {
-  position: relative;
-  z-index: 2;
-  max-width: 700px;
-  padding: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  border-radius: 10px;
 }
 
 .banner h1 {
-  font-size: 42px;
+  font-size: 32px;
   margin-bottom: 10px;
 }
 
 .banner p {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 /* ===== SEÇÕES ===== */
 section {
-  padding: 6px 1px;
+  padding: 60px 20px;
   text-align: center;
-  border-bottom: 0px solid #004595;
+  border-bottom: 0px solid #004595; /* linha azul */
 }
 
 section:last-of-type {
   border-bottom: none;
 }
+section, footer {
+  margin: 0;
+  padding: 0;
+}
+
 
 h2 {
   margin-bottom: 20px;
   color: #004595;
 }
 
-/* ===== EQUIPE ===== */
-.profissionais {
+/* ===== CARDS DE NOTÍCIAS ===== */
+.cards {
   display: flex;
   justify-content: center;
   gap: 40px;
   flex-wrap: wrap;
 }
 
-.profissional {
-  background: #fff;
+.card {
+  background: rgb(219, 218, 218);
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 1200px;
+  border-radius: 100px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.profissional:hover {
-  transform: translateY(-5px);
-      transform: translateY(-5px);  /* efeito flutuante */
-  box-shadow: 0 10px 50px rgba(145, 3, 3, 0.25);
+/* ===== EQUIPE ===== */
+.profissionais {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
 }
 
 .profissional img {
-  width: 300px;
-  height: 300px;
-  border-radius: 10%;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
   object-fit: cover;
   margin-bottom: 10px;
 }
+
+
 
 /* ===== RODAPÉ ===== */
 footer {
@@ -169,7 +192,6 @@ footer {
   padding: 30px;
   text-align: center;
 }
-
 
 footer .redes a {
   color: white;
@@ -185,48 +207,77 @@ footer .copy {
   margin-top: 15px;
   font-size: 14px;
 }
-
-/* ===== RESPONSIVIDADE ===== */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .banner h1 {
-    font-size: 28px;
-  }
-
-  .banner p {
-    font-size: 16px;
-  }
+footer {
+  margin-top: 0;
 }
-.sobre-escola {
+
+/* ===== CARROSSEL ===== */
+.carousel {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carousel-item {
+  display: none;
   text-align: center;
-  padding: 60px 20px;
-  background: #fff;
-  color: #333;
+  animation: fade 1s;
 }
 
-.sobre-escola h2 {
-  font-size: 36px;
-  font-weight: bold;
-  margin-bottom: 20px;
+.carousel-item.active {
+  display: block;
+}
+
+.carousel img {
+  width: 100%;
+  border-radius: 10px;
+  max-height: 3500px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.carousel h3 {
+  margin: 10px 0 5px;
   color: #004595;
 }
 
-.sobre-escola p {
-  max-width: 900px;
-  margin: 0 auto 40px;
-  font-size: 18px;
-  line-height: 1.8;
+.carousel p {
+  font-size: 16px;
+  color: #444;
 }
 
+/* botões */
+.carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.carousel .prev {
+  left: 10px;
+}
+
+.carousel .next {
+  right: 10px;
+}
+
+.carousel button:hover {
+  background: rgba(0,0,0,0.7);
+}
+
+/* animação de transição */
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
 /* ==== CARDS ==== */
 .cards-escola {
   display: grid;
@@ -245,8 +296,6 @@ footer .copy {
 
 .card:hover {
   transform: translateY(-8px);
-      transform: translateY(-5px);  /* efeito flutuante */
-  box-shadow: 0 10px 50px rgba(145, 3, 3, 0.25);
 }
 
 .card i {
@@ -265,6 +314,39 @@ footer .copy {
   font-size: 16px;
   line-height: 1.6;
   color: #555;
+}
+
+/* ESTILOS DAS DUAS SEÇÕES */
+.sobre-objetivos {
+  display: flex;              /* coloca lado a lado */
+  justify-content: space-between;
+  align-items: flex-start;    /* alinha no topo */
+  gap: 40px;                  /* espaço entre as caixas */
+  margin: 50px auto;
+  max-width: 1200px;
+}
+
+.sobre-objetivos .box {
+  flex: 1;                    /* divide espaço igualmente */
+  padding: 20px;
+}
+
+.sobre-objetivos h2 {
+  color: #004a99;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.sobre-objetivos p, 
+.sobre-objetivos li {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.sobre-objetivos ul {
+  list-style: disc inside;
+  padding-left: 15px;
 }
 header {
   display: flex;
@@ -294,6 +376,19 @@ nav ul li a {
   font-weight: 500;
   font-size: 16px;
 }
+/* ===== SEÇÃO DE NOVIDADES ===== */
+.novidades-section {
+  background-color: #f9fafc;
+  padding: 90px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container-novidades {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .titulo-novidades {
   font-size: 2.4rem;
   color: #003a91;
@@ -301,6 +396,7 @@ nav ul li a {
   position: relative;
   margin-bottom: 20px;
 }
+
 .titulo-novidades::after {
   content: "";
   width: 80px;
@@ -310,6 +406,7 @@ nav ul li a {
   margin: 10px auto 0;
   border-radius: 2px;
 }
+
 .intro-novidades {
   color: #444;
   font-size: 1.05rem;
@@ -324,3 +421,38 @@ nav ul li a {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 35px;
 }
+
+.card-novidade {
+  background: #fff;
+  border-radius: 16px;
+  padding: 35px 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  text-align: center;
+  border-top: 4px solid transparent;
+}
+
+.card-novidade:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+  border-top: 4px solid #006eff;
+}
+
+.icone-novidade {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.card-novidade h3 {
+  color: #004595;
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.card-novidade p {
+  color: #555;
+  font-size: 0.97rem;
+  line-height: 1.7;
+}
+

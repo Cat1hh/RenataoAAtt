@@ -118,9 +118,9 @@ header {
 
 /* ===== SEÇÕES ===== */
 section {
-  padding: 6px 1px;
+  padding: 40px 1px;
   text-align: center;
-  border-bottom: 5px solid #004595;
+  border-bottom: 0px solid #004595;
 }
 
 section:last-of-type {
@@ -286,27 +286,34 @@ nav ul {
   padding: 0;
   margin: 0;
 }
-
-/* Estilo padrão (PC) */
-nav ul {
-  display: flex;
-  justify-content: flex-end;
-  gap: 30px;
-  font-size: 18px;
+.titulo-novidades {
+  font-size: 2.4rem;
+  color: #003a91;
+  font-weight: 700;
+  position: relative;
+  margin-bottom: 20px;
+}
+.titulo-novidades::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background-color: #006eff;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+.intro-novidades {
+  color: #444;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 850px;
+  margin: 0 auto 60px;
+  text-align: justify;
 }
 
-/* Adaptação para telas pequenas (celular) */
-@media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    gap: 15px;
-    font-size: 16px;
-    text-align: center;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
+.novidades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 35px;
 }
 
