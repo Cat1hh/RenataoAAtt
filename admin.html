@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Editar Horários</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #004595, #007bff);
+      color: white;
+      font-family: Poppins, sans-serif;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .upload-box {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 500px;
+      margin: 0 auto;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    input[type="file"] {
+      margin: 20px 0;
+    }
+
+    button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      background: #00b300;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #008c00;
+    }
+
+    a {
+      display: block;
+      color: #fff;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Área do Administrador</h1>
+  <p>Envie um novo arquivo CSV para atualizar os horários.</p>
+
+  <div class="upload-box">
+    <input type="file" id="csvFile" accept=".csv">
+    <button onclick="simularUpload()">Enviar CSV</button>
+    <p id="msg"></p>
+  </div>
+
+  <a href="turmas.html">← Voltar</a>
+
+  <script>
+    function simularUpload() {
+      const file = document.getElementById("csvFile").files[0];
+      const msg = document.getElementById("msg");
+      if (!file) {
+        msg.innerText = "Selecione um arquivo CSV primeiro.";
+        return;
+      }
+      msg.innerText = `✅ Arquivo "${file.name}" carregado com sucesso (simulação).`;
+    }
+  </script>
+</body>
+</html>

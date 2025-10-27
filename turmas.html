@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horário das Turmas</title>
+  <link rel="stylesheet" href="turmas.css">
+</head>
+<body>
+  <header>
+    <h1>Horários das Turmas</h1>
+    <p>Selecione sua turma para ver o horário completo</p>
+  </header>
+
+  <main class="container">
+    <div class="turma-select">
+      <label for="turma">Turma:</label>
+      <select id="turma">
+        <optgroup label="1º Ano">
+          <option value="1A">1M1</option>
+          <option value="1B">1M2</option>
+          <option value="1C">1M3</option>
+          <option value="1D">1M4</option>
+        </optgroup>
+        <optgroup label="2º Ano">
+          <option value="2A">2M1</option>
+          <option value="2B">2M2</option>
+          <option value="2C">2M3</option>
+          <option value="2D">2M4</option>
+          <option value="2E">2M5</option>
+        </optgroup>
+        <optgroup label="3º Ano">
+          <option value="3M1">3M1</option>
+          <option value="3M2">3M2</option>
+          <option value="3M3">3M3</option>
+          <option value="3M4">3M4</option>
+          <option value="3M5">3M5</option>
+          <option value="3M6">3M6</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <div class="table-container">
+      <table id="tabela-horarios">
+        <thead>
+          <tr>
+            <th>Dia</th>
+            <th>Horário</th>
+            <th>Disciplina</th>
+            <th>Sala</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="4">Selecione uma turma acima.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="buttons">
+      <button class="voltar" onclick="voltarPortal()">← Voltar ao Portal</button>
+      <button class="admin" onclick="window.location.href='admin.html'">⚙️ Editar Tabela (Admin)</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 - EEEM Renato José da Costa Pacheco</p>
+  </footer>
+
+  <script src="turmas.js"></script>
+</body>
+</html>

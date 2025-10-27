@@ -1,0 +1,121 @@
+/* ===== CARROSSEL ===== */
+.carousel {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carousel-item {
+  display: none;
+  text-align: center;
+  animation: fade 1s;
+}
+
+.carousel-item.active {
+  display: block;
+}
+
+.carousel img {
+  width: 100%;
+  border-radius: 10px;
+  max-height: 3500px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.carousel h3 {
+  margin: 10px 0 5px;
+  color: #004595;
+}
+
+.carousel p {
+  font-size: 16px;
+  color: #444;
+}
+
+/* botões */
+.carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.carousel .prev {
+  left: 10px;
+}
+
+.carousel .next {
+  right: 10px;
+}
+
+.carousel button:hover {
+  background: rgba(0,0,0,0.7);
+}
+
+/* animação de transição */
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+/* ==== CARDS ==== */
+.cards-escola {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.card {
+  background: #f7f9fc;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+    transform: translateY(-5px);  /* efeito flutuante */
+  box-shadow: 0 10px 50px rgba(145, 3, 3, 0.25);
+}
+
+.card i {
+  font-size: 40px;
+  color: #004595;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  font-size: 22px;
+  color: #004595;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+/* ===== CARDS DE NOTÍCIAS ===== */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  width: 280px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}

@@ -7,6 +7,11 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<!-- Tela de transição com a logo -->
+<div id="page-transition">
+  <img src="Imagem/logo.png" alt="Logo" class="transition-logo">
+</div>
+
 
 
     <header>
@@ -26,7 +31,7 @@
         <li class="dropdown">
           <a href="#">Portal</a>
           <ul class="dropdown-menu">
-            <li><a href="https://seges.sedu.es.gov.br/users/sign_in">Portal do Aluno</a></li>
+            <li><a href="portais.html">Portal do Aluno</a></li>
             <li><a href="https://seges.sedu.es.gov.br/users/sign_in">Portal do Professor</a></li>
             <li><a href="https://seges.sedu.es.gov.br/users/sign_in">Portal do Responsável</a></li>
           </ul>
@@ -43,9 +48,9 @@
         <li class="dropdown">
           <a href="#">Suporte</a>
           <ul class="dropdown-menu">
-            <li><a href="https://www.google.com/maps/place/EEEM+Prof%C2%BA+Renato+Jos%C3%A9+da+Costa+Pacheco/">Localização da Escola</a></li>
-            <li><a href="REGIMENTO_ESCOLAR_EEEM_PROF_RENATO_JOSE_DA_COSTA_PACHECO_2023[1].pdf">Regulamentos e Manuais</a></li>
-            <li><a href="vespertino.html">Dúvidas Frequentes</a></li>
+            <li><a href="https://www.google.com/maps/place/EEEM+Prof%C2%BA+Renato+Jos%C3%A9+da+Costa+Pacheco/@-20.2466291,-40.2742541,17z/data=!3m1!4b1!4m6!3m5!1s0xb819d73508e11f:0xbc5d2d3b66ad0c42!8m2!3d-20.2466291!4d-40.2716792!16s%2Fg%2F11fhwwbrmv?entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D" target="_blank">Localização da Escola</a></li>
+            <li><a href="REGIMENTO_ESCOLAR_EEEM_PROF_RENATO_JOSE_DA_COSTA_PACHECO_2023[1].pdf" target="_blank">Regulamentos e Manuais</a></li>
+            <li><a href="#">Dúvidas Frequentes</a></li>
           </ul>
         </li>
       </ul>
@@ -56,29 +61,44 @@
 
 
   <!-- ===== BANNER DE BOAS-VINDAS ===== -->
-  <section id="inicio" class="banner"></section>
+  <section id="inicio" class="banner">
+  <canvas id="particles"></canvas>
+  <div class="banner-text">
+
+
+  </div>
+</section>
 <!-- ===== SOBRE A ESCOLA ===== -->
 <section id="escola">
 <!-- CONTAINER DAS DUAS SEÇÕES -->
-<section class="sobre-objetivos">
-  <div class="box">
-    <h2>Sobre a Escola</h2>
-    <p>
+  <section id="novidades" class="novidades-section">
+    <div class="container-novidades">
+      <h2 class="titulo-novidades">Sobre a Escola</h2>
+      <p class="intro-novidades">
       A <strong>EEEM Renato José da Costa Pacheco</strong> é uma escola estadual de ensino médio
       localizada em Jardim Camburi, Vitória/ES. Nosso objetivo é oferecer uma educação de qualidade,
       baseada em valores como respeito, dedicação, motivação e superação. Formamos cidadãos preparados
       para os desafios acadêmicos, profissionais e sociais.
+      
     </p>
   </div>
+</section>
 
-  <div class="box">
-    <h2>Nossos Objetivos</h2>
-    <ul>
-      <li>Oferecer ensino médio de excelência, com itinerários formativos diversificados.</li>
-      <li>Preparar os estudantes para o ENEM, vestibulares e mercado de trabalho.</li>
-      <li>Promover cidadania, ética e respeito ao próximo.</li>
-      <li>Estimular o protagonismo juvenil e o desenvolvimento de projetos inovadores.</li>
-    </ul>
+<section id="missao-visao-valores">
+  <h2>Missão, Visão e Valores</h2>
+  <div class="cards-escola">
+    <div class="card">
+      <h3>Missão</h3>
+      <p>Oferecer uma educação transformadora, preparando nossos alunos para o futuro e a cidadania.</p>
+    </div>
+    <div class="card">
+      <h3>Visão</h3>
+      <p>Ser referência em inovação, tecnologia e ensino de qualidade no Espírito Santo.</p>
+    </div>
+    <div class="card">
+      <h3>Valores</h3>
+      <p>Respeito, empatia, responsabilidade e compromisso com o conhecimento.</p>
+    </div>
   </div>
 </section>
 
@@ -95,62 +115,62 @@
     <div class="card">
       <h3>Vespertino</h3>
       <p>Cursos técnicos e profissionalizantes que preparam o aluno para o mercado de trabalho.</p>
+
     </div>
   </div>
 </section>
 
 
-<!-- ===== AMBIENTES DA ESCOLA ===== -->
+
 <section id="ambientes">
   <h2>Nossos Ambientes</h2>
 
-  <div class="carousel">
-    <div class="carousel-item active">
-      <img src="Imagem/Biblioteca.avif" alt="Biblioteca">
-      <h3>Biblioteca</h3>
-      <p>Um novo capítulo na Biblioteca da Escola Estadual Renato Pacheco! ✨📚
-Estamos muito felizes em apresentar a todos vocês o novo ambiente da nossa biblioteca escolar, que passou por melhorias especiais para oferecer um espaço mais acolhedor, organizado e inspirador para nossos estudantes.Com o novo projeto, buscamos transformar a biblioteca em mais do que um lugar de leitura — ela agora é um ambiente de convivência, aprendizado e descoberta, onde cada aluno se sente respeitado, valorizado e bem-vindo.
-Esse é só o começo de uma nova fase, onde a biblioteca deixa de ser apenas um espaço físico e passa a ser um ponto de encontro entre o conhecimento e o sonho de cada estudante. 💭✨
-📍Venha conhecer e aproveitar tudo que a nova biblioteca tem a oferecer!
-</p>
-    </div>
-    <div class="carousel-item">
-      <img src="Imagem/informatica.avif" alt="Laboratórios">
-      <h3>Laboratórios</h3>
-      <p>Laboratórios de Informática para práticas e experimentos.</p>
-    </div>
-    <div class="carousel-item">
-      <img src="Imagem/Auditorio.avif" alt="Auditório">
-      <h3>Auditório</h3>
-      <p>Ambiente para atividades e apresentações dos nossos alunos.</p>
-    </div>
-    <div class="carousel-item">
-      <img src="Imagem/salas.avif" alt="Salas de Aula">
-      <h3>Salas de Aula</h3>
-      <p>Salas amplas, ventiladas e preparadas para o ensino moderno.</p>
+  <section class="carrossel-container">
+  <div class="carrossel">
+    <div class="slide active">
+      <img src="Imagem/informatica.avif" alt="Laboratório de Informática">
+      <div class="info">
+        <h2>Laboratório de Informática</h2>
+        <p>Equipado com computadores modernos para aulas práticas de tecnologia e pesquisa.</p>
+      </div>
+      <canvas class="particles"></canvas>
     </div>
 
-    <!-- botões -->
-    <button class="prev">❮</button>
-    <button class="next">❯</button>
+    <div class="slide">
+      <img src="Imagem/Biblioteca.avif" alt="Biblioteca Escolar">
+      <div class="info">
+        <h2>Biblioteca Escolar</h2>
+        <p>Um espaço tranquilo e organizado para leitura e estudo individual.</p>
+      </div>
+      <canvas class="particles"></canvas>
+    </div>
+
+    <div class="slide">
+      <img src="Imagem/salas.avif" alt="Quadra Poliesportiva">
+      <div class="info">
+        <h2>Salas</h2>
+        <p>Área ampla para atividades escolares.</p>
+      </div>
+      <canvas class="particles"></canvas>
+    </div>
+
+    <div class="controles">
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+
+    <div class="indicadores">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
   </div>
 </section>
-
-
-
-
-
-
-
-
-
-
 
 
 
   
-  <!-- ===== CONTATO / RODAPÉ ===== -->
-  <footer id="contato">
+    <footer id="contato">
     <h3>Contato</h3>
     <p>Endereço: 
     Av. Eng. Charles Bitran, 251  - Jardim Camburi/ES</p>
@@ -168,42 +188,156 @@ Esse é só o começo de uma nova fase, onde a biblioteca deixa de ser apenas um
     <div class="vw-plugin-top-wrapper"></div>
   </div>
 </div>
+<button id="voltar-topo" title="Voltar ao topo">⬆</button>
+
+
+
+
+
+
 
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+
+
+
 <script>
   new window.VLibras.Widget('https://vlibras.gov.br/app');
 </script>
+
+
+<script>
+let slideIndex = 0;
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === index);
+    dots[i].classList.toggle("active", i === index);
+    if (i === index) startParticles(slide.querySelector(".particles"));
+  });
+}
+
+function nextSlide() {
+  slideIndex = (slideIndex + 1) % slides.length;
+  showSlide(slideIndex);
+}
+
+function prevSlide() {
+  slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+  showSlide(slideIndex);
+}
+
+document.querySelector(".next").addEventListener("click", nextSlide);
+document.querySelector(".prev").addEventListener("click", prevSlide);
+
+// Automático
+setInterval(nextSlide, 7000);
+
+// === Efeito de partículas ===
+function startParticles(canvas) {
+  const ctx = canvas.getContext("2d");
+  const particles = [];
+  const numParticles = 25;
+  const width = canvas.width = canvas.offsetWidth;
+  const height = canvas.height = canvas.offsetHeight;
+
+  for (let i = 0; i < numParticles; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      size: Math.random() * 2 + 1,
+      speedY: Math.random() * 0.5 + 0.2,
+      opacity: Math.random() * 0.5 + 0.3
+    });
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${p.opacity})`;
+      ctx.fill();
+      p.y -= p.speedY;
+      if (p.y < 0) p.y = height;
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+}
+showSlide(slideIndex);
+</script>
+
+
+
+
+
+<script>
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+canvas.width = innerWidth;
+canvas.height = document.querySelector(".banner").offsetHeight;
+
+let particles = [];
+for (let i = 0; i < 60; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 3 + 1,
+    speedX: (Math.random() - 0.5) * 0.7,
+    speedY: (Math.random() - 0.5) * 0.7
+  });
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => {
+    p.x += p.speedX;
+    p.y += p.speedY;
+    if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(255,255,255,0.7)";
+    ctx.fill();
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+
+<script>
+window.addEventListener("load", () => {
+  const intro = document.getElementById("intro-screen");
+
+  // Verifica se o usuário já viu a intro
+  const jaViuIntro = localStorage.getItem("introVisto");
+
+  if (!jaViuIntro) {
+    // Mostra a intro e depois remove
+    setTimeout(() => {
+      intro.classList.add("fade-out");
+      setTimeout(() => {
+        intro.style.display = "none";
+      }, 1000);
+    }, 2500);
+
+    // Marca que o usuário já viu
+    localStorage.setItem("introVisto", "true");
+  } else {
+    // Se já viu, esconde imediatamente
+    intro.style.display = "none";
+  }
+});
+</script>
+
+
 
 </body>
 </html>
 
 
-<script>
-let index = 0;
-const items = document.querySelectorAll(".carousel-item");
 
-function showSlide(i) {
-  items.forEach((item, idx) => {
-    item.classList.remove("active");
-    if (idx === i) item.classList.add("active");
-  });
-}
-
-document.querySelector(".next").addEventListener("click", () => {
-  index = (index + 1) % items.length;
-  showSlide(index);
-});
-
-document.querySelector(".prev").addEventListener("click", () => {
-  index = (index - 1 + items.length) % items.length;
-  showSlide(index);
-});
-
-// autoplay
-setInterval(() => {
-  index = (index + 1) % items.length;
-  showSlide(index);
-}, 50000); // muda a cada 5s
-
-showSlide(index);
-</script>

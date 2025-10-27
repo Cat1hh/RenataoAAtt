@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="matutino.css">
 </head>
 <body>
+<!-- Tela de transição com a logo -->
+<div id="page-transition">
+  <img src="Imagem/logo.png" alt="Logo" class="transition-logo">
+</div>
 
 
     <header>
@@ -26,7 +30,7 @@
         <li class="dropdown">
           <a href="#">Portal</a>
           <ul class="dropdown-menu">
-            <li><a href="https://seges.sedu.es.gov.br/users/sign_in">Portal do Aluno</a></li>
+            <li><a href="portais.html">Portal do Aluno</a></li>
             <li><a href="https://seges.sedu.es.gov.br/users/sign_in">Portal do Professor</a></li>
             <li><a href="https://seges.sedu.es.gov.br/users/sign_in">Portal do Responsável</a></li>
           </ul>
@@ -43,7 +47,7 @@
         <li class="dropdown">
           <a href="#">Suporte</a>
           <ul class="dropdown-menu">
-            <li><a href="https://www.google.com/maps/place/EEEM+Prof%C2%BA+Renato+Jos%C3%A9+da+Costa+Pacheco/">Localização da Escola</a></li>
+            <li><a href="https://www.google.com/maps/place/EEEM+Prof%C2%BA+Renato+Jos%C3%A9+da+Costa+Pacheco/@-20.2466291,-40.2742541,17z/data=!3m1!4b1!4m6!3m5!1s0xb819d73508e11f:0xbc5d2d3b66ad0c42!8m2!3d-20.2466291!4d-40.2716792!16s%2Fg%2F11fhwwbrmv?entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D">Localização da Escola</a></li>
             <li><a href="REGIMENTO_ESCOLAR_EEEM_PROF_RENATO_JOSE_DA_COSTA_PACHECO_2023[1].pdf">Regulamentos e Manuais</a></li>
             <li><a href="vespertino.html">Dúvidas Frequentes</a></li>
           </ul>
@@ -53,8 +57,13 @@
   </header>
 
   <!-- ===== BANNER ===== -->
-  <section class="banner">
-  </section>
+ <section id="inicio" class="banner">
+  <canvas id="particles"></canvas>
+  <div class="banner-text">
+
+
+  </div>
+</section>
 
       <!-- ===== SOBRE A ESCOLA ===== -->
  <section id="novidades" class="novidades-section">
@@ -143,9 +152,65 @@ Objetivo: Incentivar o crescimento dos alunos de forma crítica, ética e transf
   </div>
 </div>
 
+<button id="voltar-topo" title="Voltar ao topo">⬆</button>
+
+
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 <script>
   new window.VLibras.Widget('https://vlibras.gov.br/app');
 </script>
+<script>
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+canvas.width = innerWidth;
+canvas.height = document.querySelector(".banner").offsetHeight;
+
+let particles = [];
+for (let i = 0; i < 60; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 3 + 1,
+    speedX: (Math.random() - 0.5) * 0.7,
+    speedY: (Math.random() - 0.5) * 0.7
+  });
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => {
+    p.x += p.speedX;
+    p.y += p.speedY;
+    if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(255,255,255,0.7)";
+    ctx.fill();
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+
+<script>
+const topoBtn = document.getElementById("voltar-topo");
+window.onscroll = () => {
+  topoBtn.style.display = (window.scrollY > 200) ? "block" : "none";
+};
+topoBtn.onclick = () => window.scrollTo({top:0, behavior:"smooth"});
+</script>
+
+<script>
+window.addEventListener("load", () => {
+  const transition = document.getElementById("page-transition");
+  transition.classList.add("fade-out");
+  setTimeout(() => {
+    transition.style.display = "none";
+  }, 2000); // tempo total da animação
+});
+</script>
+
 </body>
 </html>

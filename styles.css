@@ -14,7 +14,7 @@ body {
 
 /* ===== HEADER E NAVBAR ===== */
 header {
-  background: #fff; /* fundo branco */
+  background: #fff;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -28,16 +28,8 @@ header {
   padding: 10px 50px;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  font-size: 2px;
-  gap: 10px; /* espaço entre logo e texto */
-}
-
 .logo img {
-  height: 60px; /* tamanho fixo da logo */
+  height: 60px;
   width: auto;
 }
 
@@ -45,8 +37,6 @@ header {
   list-style: none;
   display: flex;
   gap: 30px;
-  margin: 0;
-  padding: 0;
 }
 
 .nav-links li {
@@ -57,13 +47,13 @@ header {
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
-  color: #444;
-  transition: color 0.3s;
+  color: #004595;
+  transition: 0.3s ease;
 }
 
 .nav-links li a:hover {
-  color: #ff0000; /* azul destaque no hover */
-        transform: translateY(-5px);  /* efeito flutuante */
+  color: #d30000; /* destaque no hover */
+          transform: translateY(-5px);  /* efeito flutuante */
   box-shadow: 0 10px 50px rgba(80, 16, 16, 0.25);
 }
 
@@ -73,33 +63,26 @@ header {
   position: absolute;
   top: 100%;
   left: 0;
-  background: #f8f8f8;
+  background: #fff;
   list-style: none;
   padding: 10px 0;
-  margin: 0;
   border-radius: 5px;
   min-width: 180px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  z-index: 1000;
-}
-
-.dropdown-menu li {
-  text-align: left;
 }
 
 .dropdown-menu a {
   display: block;
   padding: 10px 15px;
-  color: white;
+  color: #333;
   text-decoration: none;
-  font-weight: normal;
 }
 
 .dropdown-menu a:hover {
-  background: #d3d3d3;
+  background: #f2f2f2;
+  color: #004595;
 }
 
-/* mantém aberto quando hover no li ou submenu */
 .dropdown:hover .dropdown-menu {
   display: block;
 }
@@ -113,74 +96,40 @@ header {
   align-items: center;
   justify-content: center;
   text-align: center;
+  position: relative;
 }
 
+
 .banner-text {
-  background: rgba(0, 0, 0, 0.6);
-  padding: 30px;
-  border-radius: 10px;
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 20px;
 }
 
 .banner h1 {
-  font-size: 32px;
+  font-size: 42px;
   margin-bottom: 10px;
 }
 
 .banner p {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 /* ===== SEÇÕES ===== */
 section {
-  padding: 60px 20px;
+  padding: 6px 1px;
   text-align: center;
-  border-bottom: 0px solid #004595; /* linha azul */
+  border-bottom: 0px solid #004595;
 }
 
 section:last-of-type {
   border-bottom: none;
 }
-section, footer {
-  margin: 0;
-  padding: 0;
-}
-
 
 h2 {
   margin-bottom: 20px;
   color: #004595;
-}
-
-/* ===== CARDS DE NOTÍCIAS ===== */
-.cards {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.card {
-  background: white;
-  padding: 20px;
-  width: 280px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-/* ===== EQUIPE ===== */
-.profissionais {
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  flex-wrap: wrap;
-}
-
-.profissional img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 10px;
 }
 
 
@@ -192,6 +141,7 @@ footer {
   padding: 30px;
   text-align: center;
 }
+
 
 footer .redes a {
   color: white;
@@ -207,77 +157,9 @@ footer .copy {
   margin-top: 15px;
   font-size: 14px;
 }
-footer {
-  margin-top: 0;
-}
 
-/* ===== CARROSSEL ===== */
-.carousel {
-  position: relative;
-  max-width: 700px;
-  margin: 0 auto;
-  overflow: hidden;
-}
 
-.carousel-item {
-  display: none;
-  text-align: center;
-  animation: fade 1s;
-}
 
-.carousel-item.active {
-  display: block;
-}
-
-.carousel img {
-  width: 100%;
-  border-radius: 10px;
-  max-height: 3500px;
-  object-fit: cover;
-  margin-bottom: 15px;
-}
-
-.carousel h3 {
-  margin: 10px 0 5px;
-  color: #004595;
-}
-
-.carousel p {
-  font-size: 16px;
-  color: #444;
-}
-
-/* botões */
-.carousel button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  border: none;
-  color: white;
-  font-size: 24px;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-.carousel .prev {
-  left: 10px;
-}
-
-.carousel .next {
-  right: 10px;
-}
-
-.carousel button:hover {
-  background: rgba(0,0,0,0.7);
-}
-
-/* animação de transição */
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
 /* ==== CARDS ==== */
 .cards-escola {
   display: grid;
@@ -296,6 +178,8 @@ footer {
 
 .card:hover {
   transform: translateY(-8px);
+    transform: translateY(-5px);  /* efeito flutuante */
+  box-shadow: 0 10px 50px rgba(145, 3, 3, 0.25);
 }
 
 .card i {
@@ -316,38 +200,7 @@ footer {
   color: #555;
 }
 
-/* ESTILOS DAS DUAS SEÇÕES */
-.sobre-objetivos {
-  display: flex;              /* coloca lado a lado */
-  justify-content: space-between;
-  align-items: flex-start;    /* alinha no topo */
-  gap: 40px;                  /* espaço entre as caixas */
-  margin: 50px auto;
-  max-width: 1200px;
-}
 
-.sobre-objetivos .box {
-  flex: 1;                    /* divide espaço igualmente */
-  padding: 20px;
-}
-
-.sobre-objetivos h2 {
-  color: #004a99;
-  margin-bottom: 15px;
-  text-align: center;
-}
-
-.sobre-objetivos p, 
-.sobre-objetivos li {
-  font-size: 16px;
-  line-height: 1.6;
-  text-align: justify;
-}
-
-.sobre-objetivos ul {
-  list-style: disc inside;
-  padding-left: 15px;
-}
 header {
   display: flex;
   align-items: center;
@@ -369,10 +222,395 @@ nav ul {
   padding: 0;
   margin: 0;
 }
-
-nav ul li a {
-  text-decoration: none;
-  color: #004080;
-  font-weight: 500;
-  font-size: 16px;
+/* ====== Estilos Gerais (PC e telas grandes) ====== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
+
+header, nav, section, footer {
+  max-width: 12000px;
+  margin: 0 auto;
+}
+
+/* ====== Responsividade ====== */
+
+/* Tablets e celulares médios (até 992px) */
+@media (max-width: 992px) {
+  nav ul {
+    display: flex;
+    gap: 20px;
+    font-size: 16px;
+  }
+
+  section {
+    padding: 20px;
+  }
+}
+
+/* Celulares (até 768px) */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  section {
+    padding: 15px;
+    text-align: center;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Celulares pequenos (até 480px) */
+@media (max-width: 480px) {
+  nav ul {
+    font-size: 14px;
+    gap: 10px;
+  }
+
+  h1, h2, h3 {
+    font-size: 1.2em;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  footer {
+    font-size: 12px;
+    text-align: center;
+    padding: 10px;
+  }
+}
+.titulo-novidades {
+  font-size: 2.4rem;
+  color: #003a91;
+  font-weight: 700;
+  position: relative;
+  margin-bottom: 20px;
+}
+.titulo-novidades::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background-color: #006eff;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+.intro-novidades {
+  color: #444;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 850px;
+  margin: 0 auto 60px;
+  text-align: justify;
+}
+
+.novidades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 35px;
+}
+.carrossel-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 50px auto;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  position: relative;
+  background: #f5f5f5;
+}
+
+.carrossel {
+  position: relative;
+  width: 100%;
+  height: 550px;
+}
+
+.slide {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
+}
+
+.info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(255, 62, 62, 0.849);
+  color: #fff;
+  padding: 20px;
+  border-radius: 0 0 20px 20px;
+  backdrop-filter: blur(5px);
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+.info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.info p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Botões */
+.controles {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.controles button {
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.controles button:hover {
+  background: rgba(0, 69, 149, 0.8);
+}
+
+/* Indicadores */
+.indicadores {
+  text-align: center;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  z-index: 3;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: #ddd;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.4s;
+}
+
+.dot.active {
+  background-color: #004595;
+}
+
+/* Partículas */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+
+/* ==== CARDS ==== */
+.cards-escola {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.card {
+  background: #f7f9fc;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+    transform: translateY(-5px);  /* efeito flutuante */
+  box-shadow: 0 10px 50px rgba(145, 3, 3, 0.25);
+}
+
+.card i {
+  font-size: 40px;
+  color: #004595;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  font-size: 22px;
+  color: #004595;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+/* ===== CARDS DE NOTÍCIAS ===== */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  width: 280px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.banner {
+  position: relative;
+  overflow: hidden;
+}
+
+#particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.banner-text {
+  position: relative;
+  z-index: 2;
+}
+#voltar-topo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #004595;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  display: none;
+  transition: 0.3s;
+}
+
+#voltar-topo:hover {
+  background: #d30000;
+}
+
+/* ===== TRANSIÇÃO DE PÁGINA ===== */
+#page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  animation: fadeOut 1s ease forwards;
+  animation-delay: 1.5s; /* tempo antes de sumir */
+}
+
+.transition-logo {
+  width: 150px;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: logoPop 1s ease forwards;
+}
+
+/* Animação da logo aparecendo */
+@keyframes logoPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animação do fundo desaparecendo */
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+#missao-visao-valores {
+  padding: 60px 200px;
+  text-align: center; /* Centraliza o título e os elementos dentro */
+}
+
+#missao-visao-valores h2 {
+  font-size: 2.2rem;
+  color: #004595;
+  margin-bottom: 40px;
+  text-align: center; /* Garante centralização mesmo se o pai mudar */
+}
+
+#missao-visao-valores .cards-escola {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
