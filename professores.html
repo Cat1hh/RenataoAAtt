@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Localização dos Professores</title>
+  <link rel="stylesheet" href="professores.css">
+</head>
+<body>
+  <h1>Localização dos Professores</h1>
+  <p>Selecione sua matéria para visualizar apenas seus horários</p>
+
+  <div class="filtro-container">
+    <label for="filtroMateria">Matéria:</label>
+    <select id="filtroMateria">
+      <option value="">Carregando...</option>
+    </select>
+  </div>
+
+  <div class="tabela-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Dia</th>
+          <th>Disciplina</th>
+          <th>Turma</th>
+          <th>Horário</th>
+          <th>Sala</th>
+        </tr>
+      </thead>
+      <tbody id="corpoTabela">
+        <tr><td colspan="5">Carregando...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="professores.js"></script>
+</body>
+</html>

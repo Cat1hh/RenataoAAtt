@@ -1,0 +1,45 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: #004aad;
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+.tabela-container {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+  color: black;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: #003b8e;
+  color: white;
+  padding: 10px;
+}
+
+td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.filtro-container {
+  margin: 15px 0;
+}
+
+select {
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1em;
+}

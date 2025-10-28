@@ -89,32 +89,48 @@ header {
 
 /* ===== BANNER ===== */
 .banner {
-  background: url("Imagem/Renatao.png") center/cover no-repeat;
-  color: white;
+  position: relative;
+  overflow: hidden;
   height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  position: relative;
 }
 
+.banner-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
 
 .banner-text {
   position: relative;
   z-index: 2;
-  max-width: 700px;
+  color: white;
   padding: 20px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
 }
 
-.banner h1 {
-  font-size: 42px;
-  margin-bottom: 10px;
+/* Ajuste em telas pequenas */
+@media (max-width: 768px) {
+  .banner {
+    height: 40vh;
+  }
+
+  .banner-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .banner-text p {
+    font-size: 1rem;
+  }
 }
 
-.banner p {
-  font-size: 20px;
-}
 
 /* ===== SEÇÕES ===== */
 section {
@@ -614,3 +630,130 @@ header, nav, section, footer {
   flex-wrap: wrap;
 }
 
+/* ===== MURAL DE AVISOS ===== */
+.mural-avisos {
+  width: 100%;
+  max-width: 1000px;
+  margin: 40px auto;
+  overflow: hidden;
+  position: relative;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  background: #fff;
+}
+
+/* Container principal */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Faixa de slides */
+.carousel-slide {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Cada imagem */
+.carousel-slide a {
+  min-width: 100%;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* ===== Botões de navegação ===== */
+.carousel-prev,
+.carousel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 0, 0, 0.7);
+  color: #fff;
+  border: none;
+  font-size: 30px;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+  background-color: rgba(255, 0, 0, 0.9);
+}
+
+.carousel-prev {
+  left: 15px;
+}
+
+.carousel-next {
+  right: 15px;
+}
+
+/* ===== Bolinhas (indicadores) ===== */
+.carousel-dots {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  text-align: center;
+}
+
+.carousel-dots span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-dots span.active {
+  background-color: #ff0000;
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 768px) {
+  .mural-avisos {
+    border-radius: 10px;
+  }
+
+  .carousel-prev,
+  .carousel-next {
+    font-size: 24px;
+    padding: 8px 12px;
+  }
+
+  .carousel-dots span {
+    width: 10px;
+    height: 10px;
+    margin: 0 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-prev,
+  .carousel-next {
+    font-size: 20px;
+    padding: 6px 10px;
+  }
+
+  .carousel-dots {
+    bottom: 10px;
+  }
+
+  .carousel-dots span {
+    width: 8px;
+    height: 8px;
+  }
+}
