@@ -538,29 +538,7 @@ header, nav, section, footer {
   pointer-events: none;
 }
 
-.banner-text {
-  position: relative;
-  z-index: 2;
-}
-#voltar-topo {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #004595;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  padding: 12px 16px;
-  cursor: pointer;
-  font-size: 18px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  display: none;
-  transition: 0.3s;
-}
 
-#voltar-topo:hover {
-  background: #d30000;
-}
 
 /* ===== TRANSIÇÃO DE PÁGINA ===== */
 #page-transition {
@@ -611,10 +589,7 @@ header, nav, section, footer {
   }
 }
 
-#missao-visao-valores {
-  padding: 60px 200px;
-  text-align: center; /* Centraliza o título e os elementos dentro */
-}
+
 
 #missao-visao-valores h2 {
   font-size: 2.2rem;
