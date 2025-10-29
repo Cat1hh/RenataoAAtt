@@ -1,0 +1,148 @@
+/* ===== ESTILO GERAL ===== */
+body {
+  font-family: "Poppins", sans-serif;
+  background: #004aad;
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1em;
+  margin-bottom: 15px;
+}
+
+.filtro-container {
+  margin: 15px 0;
+}
+
+label {
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1em;
+  background: white;
+  color: #004aad;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+select:hover {
+  background: #f0f0f0;
+}
+
+/* ===== CONTAINER DA TABELA ===== */
+.tabela-container {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 900px;
+  margin: 20px auto;
+  color: black;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  overflow-x: auto; /* 👈 permite rolar horizontalmente no celular */
+}
+
+/* ===== TABELA ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* 👈 mantém a estrutura mesmo em telas pequenas */
+}
+
+th, td {
+  padding: 12px 8px;
+  text-align: center;
+}
+
+th {
+  background: #003b8e;
+  color: white;
+  font-weight: 600;
+}
+
+td {
+  border-bottom: 1px solid #ddd;
+}
+
+/* ===== SCROLL PERSONALIZADO ===== */
+.tabela-container::-webkit-scrollbar {
+  height: 8px;
+}
+.tabela-container::-webkit-scrollbar-thumb {
+  background: #004aad;
+  border-radius: 10px;
+}
+.tabela-container::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+/* ===== MODO RESPONSIVO ===== */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .tabela-container {
+    padding: 10px;
+    border-radius: 15px;
+  }
+
+  table {
+    font-size: 0.9em;
+    min-width: 500px;
+  }
+
+  select {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.3em;
+  }
+
+  p {
+    font-size: 0.9em;
+  }
+
+  .tabela-container {
+    padding: 8px;
+  }
+
+  table {
+    font-size: 0.85em;
+    min-width: 400px;
+  }
+
+  th, td {
+    padding: 8px 5px;
+  }
+
+  select {
+    width: 90%;
+    margin-top: 8px;
+  }
+
+  .filtro-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
