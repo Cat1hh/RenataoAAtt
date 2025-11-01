@@ -387,6 +387,11 @@ header, nav, section, footer {
 }
 
 
+.banner {
+  position: relative;
+  overflow: hidden;
+}
+
 #particles {
   position: absolute;
   top: 0;
@@ -395,6 +400,11 @@ header, nav, section, footer {
   height: 100%;
   z-index: 0;
   pointer-events: none;
+}
+
+.banner-text {
+  position: relative;
+  z-index: 2;
 }
 
 

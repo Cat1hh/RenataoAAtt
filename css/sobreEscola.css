@@ -326,6 +326,11 @@ nav ul {
   overflow: hidden;
 }
 
+.banner {
+  position: relative;
+  overflow: hidden;
+}
+
 #particles {
   position: absolute;
   top: 0;
