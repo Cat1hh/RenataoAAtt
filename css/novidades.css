@@ -136,16 +136,9 @@ header {
 /* Ajuste em telas pequenas */
 @media (max-width: 768px) {
   .banner {
-    height: 40vh;
+    height: 25vh;
   }
 
-  .banner-text h1 {
-    font-size: 1.5rem;
-  }
-
-  .banner-text p {
-    font-size: 1rem;
-  }
 }
 
 /* ===== SEÇÕES ===== */
@@ -474,10 +467,7 @@ nav ul li a {
   line-height: 1.7;
 }
 
-.banner {
-  position: relative;
-  overflow: hidden;
-}
+
 
 #particles {
   position: absolute;
@@ -489,10 +479,7 @@ nav ul li a {
   pointer-events: none;
 }
 
-.banner-text {
-  position: relative;
-  z-index: 2;
-}
+
 #voltar-topo {
   position: fixed;
   bottom: 20px;
@@ -559,5 +546,75 @@ nav ul li a {
   100% {
     opacity: 0;
     visibility: hidden;
+  }
+}
+/* ===== MENU HAMBÚRGUER ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 2000; /* fica acima do menu */
+}
+
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background: #004595;
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: 0.4s;
+}
+
+/* Estado ativo (quando o menu abre) */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 220px;
+    background: white;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 80px 20px;
+    gap: 20px;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    transition: right 0.4s ease;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links li a {
+    font-size: 18px;
+    color: #004595;
+  }
+
+  /* Oculta os dropdowns até clicar */
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .dropdown-menu a {
+    padding-left: 20px;
   }
 }

@@ -21,6 +21,12 @@
             <img src="Imagem/Logo.png" alt="Logo da Escola">
           </a>
         </div>
+<!-- Botão Hambúrguer -->
+<div class="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 
 
         <!-- Menu -->
@@ -201,6 +207,22 @@ window.addEventListener("load", () => {
   }, 2000); // tempo total da animação
 });
 </script>
+<script>
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
 
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('active');
+});
+
+// Fecha o menu ao clicar em um link (opcional)
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('active');
+  });
+});
+</script>
 </body>
 </html>
