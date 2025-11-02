@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel Admin - Escola Renato Pacheco</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-[Poppins] flex min-h-screen">
+  <!-- Sidebar -->
+  <aside class="w-64 bg-[#004595] text-white flex flex-col">
+    <div class="p-6 text-center border-b border-blue-900">
+      <h1 class="text-2xl font-bold">🐧 Pachequinho</h1>
+      <p class="text-sm opacity-80">Painel Administrativo</p>
+    </div>
+    <nav class="flex-1 p-4 space-y-3">
+      <a href="turmas.html" class="block py-2 px-4 rounded hover:bg-blue-800 transition">📘 Turmas</a>
+      <a href="professores.html" class="block py-2 px-4 rounded hover:bg-blue-800 transition">👩‍🏫 Professores</a>
+      <button id="abrirPachequinho" class="w-full text-left py-2 px-4 rounded hover:bg-blue-800 transition">📩 Mensagem do Pachequinho</button>
+    </nav>
+    <footer class="p-4 text-center text-sm opacity-70 border-t border-blue-900">
+      © 2025 Renato Pacheco
+    </footer>
+  </aside>
+
+  <!-- Conteúdo -->
+  <main class="flex-1 p-10 overflow-y-auto">
+    <h2 class="text-2xl font-bold mb-6">Gerenciar Professores e Horários</h2>
+
+    <!-- Professores -->
+    <section class="bg-white shadow-md rounded-xl p-6 mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-[#004595]">👩‍🏫 Adicionar Professor</h3>
+      <form id="formProfessor" class="flex gap-4 flex-wrap">
+        <input type="text" id="nome" placeholder="Nome" class="border rounded-lg p-2 flex-1" required />
+        <input type="email" id="email" placeholder="E-mail" class="border rounded-lg p-2 flex-1" required />
+        <button type="submit" class="bg-[#004595] hover:bg-blue-800 text-white px-5 py-2 rounded-lg">Adicionar</button>
+      </form>
+
+      <table class="w-full mt-6 border-collapse text-sm">
+        <thead class="bg-[#004595] text-white">
+          <tr>
+            <th class="py-2 px-3 text-left">Nome</th>
+            <th class="py-2 px-3 text-left">Email</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaProfessores"></tbody>
+      </table>
+    </section>
+
+    <!-- Horários -->
+    <section class="bg-white shadow-md rounded-xl p-6 mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-[#004595]">📅 Gerenciar Horários</h3>
+
+      <form id="formAula" class="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <input type="text" id="dia" placeholder="Dia (ex: Segunda)" class="border rounded-lg p-2" required />
+        <input type="text" id="horario" placeholder="Horário (ex: 07:00 - 07:50)" class="border rounded-lg p-2" required />
+        <input type="text" id="disciplina" placeholder="Disciplina" class="border rounded-lg p-2" required />
+        <input type="text" id="sala" placeholder="Sala" class="border rounded-lg p-2" required />
+        <select id="turma" class="border rounded-lg p-2" required>
+          <option value="">Selecione a turma</option>
+          <option value="3M1">3M1</option>
+          <option value="3M2">3M2</option>
+          <option value="3M5">3M5</option>
+          <option value="3M6">3M6</option>
+        </select>
+
+        <button type="submit" class="col-span-full bg-[#004595] hover:bg-blue-800 text-white px-5 py-2 rounded-lg">
+          Adicionar Aula
+        </button>
+      </form>
+
+      <table class="w-full mt-6 border-collapse text-sm">
+        <thead class="bg-[#004595] text-white">
+          <tr>
+            <th class="py-2 px-3 text-left">Dia</th>
+            <th class="py-2 px-3 text-left">Horário</th>
+            <th class="py-2 px-3 text-left">Disciplina</th>
+            <th class="py-2 px-3 text-left">Sala</th>
+            <th class="py-2 px-3 text-left">Turma</th>
+            <th class="py-2 px-3 text-left">Status</th>
+            <th class="py-2 px-3 text-right">Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaAulas"></tbody>
+      </table>
+    </section>
+  </main>
+
+ <div id="modalPachequinho" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+  <div class="bg-white rounded-lg shadow-lg p-6 w-96 text-gray-800">
+    <h2 class="text-lg font-bold mb-3 text-[#004595]">Mensagem do Pachequinho 🐧</h2>
+    <form id="formEmail" class="flex flex-col gap-3">
+      <input type="email" id="destino" placeholder="Email do professor" class="border rounded-lg p-2" required />
+      <input type="text" id="titulo" placeholder="Assunto (ex: Reunião na sala 05)" class="border rounded-lg p-2" required />
+
+      <select id="mensagemPredefinida" class="border rounded-lg p-2">
+        <option value="">Selecione uma mensagem pré-definida</option>
+        <option value="Reunião na sala dos professores às 10h.">Reunião na sala dos professores</option>
+        <option value="Lembrete: entrega de notas até sexta-feira.">Lembrete de notas</option>
+        <option value="Aviso: mudança de sala para o laboratório de informática.">Mudança de sala</option>
+      </select>
+
+      <textarea id="mensagem" placeholder="Digite a mensagem..." class="border rounded-lg p-2 h-28" required></textarea>
+
+      <button type="submit" class="bg-[#004595] hover:bg-blue-800 text-white py-2 rounded-lg">Enviar</button>
+    </form>
+    <button id="fecharModal" class="mt-4 text-sm text-[#004595] hover:underline">Fechar</button>
+  </div>
+</div>
+
+<script>
+  const selectPredef = document.getElementById("mensagemPredefinida");
+  const mensagemBox = document.getElementById("mensagem");
+
+  selectPredef.addEventListener("change", () => {
+    if (selectPredef.value) {
+      mensagemBox.value = selectPredef.value;
+    }
+  });
+</script>
+
+  <script src="js/painel_admin.js"></script>
+  <script src="js/email.js"></script>
+</body>
+</html>
