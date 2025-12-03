@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel Admin - Escola Renato Pacheco</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-[Poppins] flex min-h-screen">
+  <!-- Sidebar -->
+  <aside class="w-64 bg-[#004595] text-white flex flex-col">
+    <div class="p-6 text-center border-b border-blue-900">
+      <h1 class="text-2xl font-bold">🐧 Pachequinho</h1>
+      <p class="text-sm opacity-80">Painel Administrativo</p>
+    </div>
+    <nav class="flex-1 p-4 space-y-3">
+      <a href="turmas.html" class="block py-2 px-4 rounded hover:bg-blue-800 transition">📘 Turmas</a>
+      <a href="professores.html" class="block py-2 px-4 rounded hover:bg-blue-800 transition">👩‍🏫 Professores</a>
+      <a href="painel_recuperacoes.html" class="block py-2 px-4 rounded hover:bg-blue-800 transition">📊 Alunos em Recuperação</a>
+      <button id="abrirPachequinho" class="w-full text-left py-2 px-4 rounded hover:bg-blue-800 transition">📩 Mensagem do Pachequinho</button>
+    </nav>
+    <footer class="p-4 text-center text-sm opacity-70 border-t border-blue-900">
+      © 2025 Renato Pacheco
+    </footer>
+  </aside>
+
+  <!-- Conteúdo -->
+  <main class="flex-1 p-10 overflow-y-auto">
+    <h2 class="text-2xl font-bold mb-6">Gerenciar Professores e Horários</h2>
+
+    <!-- Professores -->
+    <section class="bg-white shadow-md rounded-xl p-6 mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-[#004595]">👩‍🏫 Cadastrar Professor</h3>
+
+      <!-- Formulário de Professor -->
+      <form id="formProfessor" class="grid grid-cols-1 md:grid-cols-6 gap-4">
+        <input type="text" id="nomeProfessor" placeholder="Nome do Professor" class="border rounded-lg p-2" required />
+        <input type="email" id="emailProfessor" placeholder="E-mail" class="border rounded-lg p-2" required />
+        <input type="password" id="senhaProfessor" placeholder="Senha" class="border rounded-lg p-2" required />
+        <input type="text" id="disciplinaProfessor" placeholder="Disciplina (ex: Matemática)" class="border rounded-lg p-2" required />
+        <select id="turmaProfessor" class="border rounded-lg p-2" required>
+          <option value="">Selecione a Turma</option>
+        </select>
+
+        <button type="submit" class="col-span-full bg-[#004595] hover:bg-blue-800 text-white px-5 py-2 rounded-lg">
+          Cadastrar Professor
+        </button>
+      </form>
+
+      <!-- Tabela de Professores -->
+      <table class="w-full mt-6 border-collapse text-sm">
+        <thead class="bg-[#004595] text-white">
+          <tr>
+            <th class="py-2 px-3 text-left">Nome</th>
+            <th class="py-2 px-3 text-left">E-mail</th>
+            <th class="py-2 px-3 text-left">Disciplina</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaProfessores"></tbody>
+      </table>
+    </section>
+
+    <!-- Alunos -->
+    <section class="bg-white shadow-md rounded-xl p-6 mb-8">
+      <h3 class="text-xl font-semibold mb-4 text-[#004595]">👨‍🎓 Cadastrar Alunos</h3>
+
+      <!-- Formulário de Alunos -->
+      <form id="formAluno" class="grid grid-cols-1 md:grid-cols-6 gap-4">
+        <select id="turmaAluno" class="border rounded-lg p-2" required>
+          <option value="">Selecione a turma</option>
+        </select>
+        <input type="text" id="nomeAluno" placeholder="Nome do Aluno" class="border rounded-lg p-2" required />
+        <input type="text" id="telefoneAluno" placeholder="Telefone do Aluno" class="border rounded-lg p-2" />
+        <input type="text" id="nomeResponsavel" placeholder="Nome do Responsável" class="border rounded-lg p-2" required />
+        <input type="email" id="emailResponsavel" placeholder="E-mail do Responsável" class="border rounded-lg p-2" required />
+        <input type="tel" id="telefoneResponsavel" placeholder="Telefone do Responsável" class="border rounded-lg p-2" />
+        <button type="submit" class="col-span-full bg-[#004595] hover:bg-blue-800 text-white px-5 py-2 rounded-lg">
+          Adicionar Aluno
+        </button>
+      </form>
+
+      <!-- Tabela de Alunos -->
+      <table class="w-full mt-6 border-collapse text-sm">
+        <thead class="bg-[#004595] text-white">
+          <tr>
+            <th class="py-2 px-3 text-left">Turma</th>
+            <th class="py-2 px-3 text-left">Aluno</th>
+            <th class="py-2 px-3 text-left">Responsável</th>
+            <th class="py-2 px-3 text-left">Email</th>
+            <th class="py-2 px-3 text-left">Telefone Resp.</th>
+            <th class="py-2 px-3 text-left">Telefone Aluno</th>
+            <th class="py-2 px-3 text-left">Nota</th>
+            <th class="py-2 px-3 text-right">Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaAlunos"></tbody>
+      </table>
+    </section>
+
+
+
+<div id="modalPachequinho" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+  <div class="bg-white rounded-lg shadow-lg p-6 w-96 text-gray-800">
+    <h2 class="text-lg font-bold mb-3 text-[#004595]">Mensagem do Pachequinho 🐧</h2>
+    <form id="formEmail" class="flex flex-col gap-3">
+      <input type="email" id="destino" placeholder="Email do professor" class="border rounded-lg p-2" required />
+      <input type="text" id="titulo" placeholder="Assunto (ex: Reunião na sala 05)" class="border rounded-lg p-2" required />
+
+      <select id="mensagemPredefinida" class="border rounded-lg p-2">
+        <option value="">Selecione uma mensagem pré-definida</option>
+        <option value="Reunião na sala dos professores às 10h.">Reunião na sala dos professores</option>
+        <option value="Lembrete: entrega de notas até sexta-feira.">Lembrete de notas</option>
+        <option value="Aviso: mudança de sala para o laboratório de informática.">Mudança de sala</option>
+      </select>
+
+      <textarea id="mensagem" placeholder="Digite a mensagem..." class="border rounded-lg p-2 h-28" required></textarea>
+
+      <button type="submit" class="bg-[#004595] hover:bg-blue-800 text-white py-2 rounded-lg">Enviar</button>
+    </form>
+    <button id="fecharModal" class="mt-4 text-sm text-[#004595] hover:underline">Fechar</button>
+  </div>
+</div>
+
+<script>
+  const selectPredef = document.getElementById("mensagemPredefinida");
+  const mensagemBox = document.getElementById("mensagem");
+
+  selectPredef.addEventListener("change", () => {
+    if (selectPredef.value) {
+      mensagemBox.value = selectPredef.value;
+    }
+  });
+</script>
+<script>
+  const formAluno = document.getElementById("formAluno");
+  const tabelaAlunos = document.getElementById("tabelaAlunos");
+
+  async function carregarTurmasAluno() {
+    try {
+      const res = await fetch("http://localhost:3000/api/turmas");
+      const turmas = await res.json();
+      const select = document.getElementById("turmaAluno");
+      select.innerHTML = '<option value="">Selecione a turma</option>';
+      turmas.forEach(t => {
+        const opt = document.createElement("option");
+        opt.value = t.id;
+        opt.textContent = t.nome;
+        select.appendChild(opt);
+      });
+    } catch (err) {
+      console.error("Erro ao carregar turmas:", err);
+    }
+  }
+
+  async function carregarAlunos() {
+    try {
+      const res = await fetch("http://localhost:3000/api/alunos");
+      const alunos = await res.json();
+
+      tabelaAlunos.innerHTML = "";
+      alunos.forEach(a => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${a.turma_nome || "-"}</td>
+          <td>${a.nome_aluno}</td>
+          <td>${a.nome_responsavel}</td>
+          <td>${a.email_responsavel}</td>
+          <td>${a.telefone_responsavel || "-"}</td>
+          <td>${a.telefone_aluno || "-"}</td>
+          <td>${a.numero_aluno || "-"}</td>
+          <td>
+            <button class="text-red-600 hover:underline" onclick="excluirAluno(${a.id})">Excluir</button>
+          </td>
+        `;
+        tabelaAlunos.appendChild(tr);
+      });
+    } catch (err) {
+      console.error("Erro ao carregar alunos:", err);
+    }
+  }
+
+  formAluno.addEventListener("submit", async e => {
+    e.preventDefault();
+
+    const turma_id = document.getElementById("turmaAluno").value;
+    const nome_aluno = document.getElementById("nomeAluno").value.trim();
+    const nome_responsavel = document.getElementById("nomeResponsavel").value.trim();
+    const email_responsavel = document.getElementById("emailResponsavel").value.trim();
+    const telefone_responsavel = document.getElementById("telefoneResponsavel").value.trim();
+    const telefone_aluno = document.getElementById("telefoneAluno").value.trim();
+
+    if (!turma_id || !nome_aluno || !nome_responsavel || !email_responsavel) {
+      alert("Por favor, preencha todos os campos obrigatórios!");
+      return;
+    }
+
+    try {
+      const res = await fetch("http://localhost:3000/api/alunos", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          turma_id,
+          nome_aluno,
+          nome_responsavel,
+          email_responsavel,
+          telefone_responsavel,
+          telefone_aluno,
+          termo_aceito: 1
+        }),
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        alert("Aluno cadastrado com sucesso!");
+        formAluno.reset();
+        carregarAlunos();
+
+        // 📨 Enviar e-mail automático para o responsável com o número do aluno
+        if (data.numero_aluno && emailjs) {
+          emailjs.send("seu_service_id", "seu_template_id", {
+            to_name: nome_responsavel,
+            to_email: email_responsavel,
+            aluno_nome: nome_aluno,
+            numero_aluno: data.numero_aluno,
+            message: `Olá ${nome_responsavel}, o aluno ${nome_aluno} foi cadastrado com sucesso! O número do aluno é ${data.numero_aluno}.`,
+          }).then(() => {
+            console.log("Email enviado com sucesso para o responsável!");
+          }).catch(err => {
+            console.error("Erro ao enviar e-mail automático:", err);
+          });
+        }
+      } else {
+        alert(data.error || "Erro ao cadastrar aluno.");
+      }
+    } catch (err) {
+      console.error("Erro ao cadastrar aluno:", err);
+    }
+  });
+
+  async function excluirAluno(id) {
+    if (!confirm("Tem certeza que deseja excluir este aluno?")) return;
+
+    try {
+      const res = await fetch(`http://localhost:3000/api/alunos/${id}`, { method: "DELETE" });
+      const data = await res.json();
+
+      if (res.ok) {
+        alert("Aluno excluído com sucesso!");
+        carregarAlunos();
+      } else {
+        alert(data.error || "Erro ao excluir aluno.");
+      }
+    } catch (err) {
+      console.error("Erro ao excluir aluno:", err);
+    }
+  }
+async function carregarTurmasProfessor() {
+  try {
+    const res = await fetch("http://localhost:3000/api/turmas");
+    const turmas = await res.json();
+
+    const select = document.getElementById("turmaProfessor");
+    select.innerHTML = '<option value="">Selecione a Turma</option>';
+
+    turmas.forEach(t => {
+      const opt = document.createElement("option");
+      opt.value = t.id;
+      opt.textContent = t.nome;
+      select.appendChild(opt);
+    });
+  } catch (err) {
+    console.error("Erro ao carregar turmas para professor:", err);
+  }
+}
+
+carregarTurmasAluno();
+carregarAlunos();
+carregarTurmasProfessor(); // ✅ AGORA FUNCIONA
+
+</script>
+<script>
+// =============================
+// CARREGAR TURMAS PARA PROFESSOR
+// =============================
+async function carregarTurmasProfessor() {
+  try {
+    const res = await fetch("http://localhost:3000/api/turmas");
+    const turmas = await res.json();
+
+    const select = document.getElementById("turmaProfessor");
+    select.innerHTML = '<option value="">Selecione a Turma</option>';
+
+    turmas.forEach(t => {
+      const opt = document.createElement("option");
+      opt.value = t.id;
+      opt.textContent = t.nome;
+      select.appendChild(opt);
+    });
+  } catch (err) {
+    console.error("Erro ao carregar turmas:", err);
+  }
+}
+
+// =============================
+// CARREGAR PROFESSORES NA TABELA
+// =============================
+async function carregarProfessores() {
+  try {
+    const res = await fetch("http://localhost:3000/api/professores");
+    const professores = await res.json();
+
+    const tabela = document.getElementById("tabelaProfessores");
+    tabela.innerHTML = "";
+
+    professores.forEach(p => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td class="py-2 px-3">${p.nome}</td>
+        <td class="py-2 px-3">${p.email}</td>
+        <td class="py-2 px-3">${p.disciplina}</td>
+      `;
+      tabela.appendChild(tr);
+    });
+
+  } catch (err) {
+    console.error("Erro ao carregar professores:", err);
+  }
+}
+
+// =============================
+// CADASTRAR PROFESSOR
+// =============================
+document.getElementById("formProfessor").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const nome = document.getElementById("nomeProfessor").value.trim();
+  const email = document.getElementById("emailProfessor").value.trim();
+  const senha = document.getElementById("senhaProfessor").value.trim();
+  const disciplina = document.getElementById("disciplinaProfessor").value.trim();
+  const turma_id = document.getElementById("turmaProfessor").value;
+
+  if (!nome || !email || !senha || !disciplina || !turma_id) {
+    alert("Preencha todos os campos!");
+    return;
+  }
+
+  try {
+    const res = await fetch("http://localhost:3000/api/professores", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nome, email, senha, disciplina, turma_id })
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      alert("Professor cadastrado com sucesso!");
+      document.getElementById("formProfessor").reset();
+      carregarProfessores();
+    } else {
+      alert(data.error || "Erro ao cadastrar professor.");
+    }
+
+  } catch (err) {
+    console.error("Erro ao cadastrar professor:", err);
+  }
+});
+
+// =============================
+// INICIALIZAÇÃO
+// =============================
+carregarTurmasProfessor();
+carregarProfessores();
+</script>
+
+
+  <script src="js/painel_admin.js"></script>
+  <script src="js/email.js"></script>
+</body>
+</html>

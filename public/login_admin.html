@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login do Administrador - Escola Renato Pacheco</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-900 to-blue-600 h-screen flex items-center justify-center font-[Poppins]">
+
+  <div class="bg-white shadow-lg rounded-2xl p-8 w-96 text-center">
+    <h1 class="text-2xl font-bold text-[#004595] mb-2">🐧 Painel do Administrador</h1>
+    <p class="text-gray-600 mb-6 text-sm">Acesso restrito ao administrador</p>
+
+    <form id="formLoginAdmin" class="flex flex-col gap-4 text-left">
+      <div>
+        <label for="email" class="text-sm font-medium text-gray-700">E-mail</label>
+        <input type="email" id="email" class="w-full border rounded-lg p-2 mt-1" required />
+      </div>
+
+      <div>
+        <label for="senha" class="text-sm font-medium text-gray-700">Senha</label>
+        <input type="password" id="senha" class="w-full border rounded-lg p-2 mt-1" required />
+      </div>
+
+      <button type="submit" class="bg-[#004595] hover:bg-blue-800 text-white font-semibold py-2 rounded-lg transition">
+        Entrar
+      </button>
+    </form>
+
+    <p id="erro" class="text-red-500 text-sm mt-3 hidden">E-mail ou senha incorretos.</p>
+  </div>
+
+  <script>
+    // ✅ Se já estiver logado, vai direto pro painel
+    if (localStorage.getItem("adminAuth") === "true") {
+      window.location.href = "painel_admin.html";
+    }
+
+    const form = document.getElementById("formLoginAdmin");
+    const erro = document.getElementById("erro");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+
+      try {
+        const res = await fetch("/api/loginAdmin", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, senha }),
+        });
+
+        if (!res.ok) {
+          erro.classList.remove("hidden");
+          return;
+        }
+
+        const admin = await res.json();
+        localStorage.setItem("adminAuth", "true");
+        localStorage.setItem("adminNome", admin.nome);
+
+        window.location.href = "painel_admin.html";
+      } catch (err) {
+        console.error(err);
+        erro.classList.remove("hidden");
+      }
+    });
+  </script>
+</body>
+</html>

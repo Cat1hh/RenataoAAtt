@@ -1,0 +1,485 @@
+/* ===== RESET BÁSICO ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background: #f9f9f9;
+  color: #333;
+}
+
+/* ===== HEADER E NAVBAR ===== */
+header {
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+}
+
+.logo img {
+  height: 60px;
+  width: auto;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #004595;
+  transition: 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #ff0000; /* destaque no hover */
+  transform: translateY(-5px);  /* efeito flutuante */
+  box-shadow: 0 10px 50px rgba(80, 16, 16, 0.25);
+}
+
+/* ===== DROPDOWN MENU ===== */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  list-style: none;
+  padding: 10px 0;
+  border-radius: 5px;
+  min-width: 180px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  background: #f2f2f2;
+  color: #004595;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .banner {
+    height: auto;
+  }
+
+  .banner-img {
+    object-fit: contain;
+  }
+}
+
+
+/* ===== SEÇÕES ===== */
+section {
+  padding: 40px 1px;
+  text-align: center;
+  border-bottom: 0px solid #004595;
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #004595;
+}
+
+/* ===== EQUIPE ===== */
+.profissionais {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.profissional {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profissional:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.profissional img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* ===== RODAPÉ ===== */
+footer {
+  background: #004595;
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+
+footer .redes a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+}
+
+footer .redes a:hover {
+  text-decoration: underline;
+}
+
+footer .copy {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+
+.sobre-escola {
+  text-align: center;
+  padding: 60px 20px;
+  background: #fff;
+  color: #333;
+}
+
+.sobre-escola h2 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #004595;
+}
+
+.sobre-escola p {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* ==== CARDS ==== */
+.cards-escola {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.card {
+  background: #f7f9fc;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+      transform: translateY(-5px);  /* efeito flutuante */
+  box-shadow: 0 10px 50px rgba(61, 14, 14, 0.25);
+}
+
+.card i {
+  font-size: 40px;
+  color: #004595;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  font-size: 22px;
+  color: #004595;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 🔹 logo à esquerda, menu mais centralizado */
+  padding: 10px 80px;
+}
+
+nav {
+  flex: 1; /* 🔹 ocupa espaço entre logo e canto direito */
+  display: flex;
+  justify-content: center; /* 🔹 centraliza o menu */
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center; /* 🔹 centraliza os itens no meio */
+  gap: 40px; /* 🔹 espaço entre os itens */
+  padding: 0;
+  margin: 0;
+}
+.titulo-novidades {
+  font-size: 2.4rem;
+  color: #003a91;
+  font-weight: 700;
+  position: relative;
+  margin-bottom: 20px;
+}
+.titulo-novidades::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background-color: #006eff;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+.intro-novidades {
+  color: #444;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 850px;
+  margin: 0 auto 60px;
+  text-align: justify;
+}
+
+.novidades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 35px;
+}
+
+  .btn-blue-red {
+    background-color: #007bff;    /* azul */
+    color: #ffffff;               /* texto branco */
+    border: 3px solid #ff0000;    /* borda vermelha */
+    padding: 10px 18px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 6px;           /* ligeiramente arredondado */
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+
+  .btn-blue-red.pill {
+    border-radius: 999px;         /* formato "pill" */
+    padding: 10px 24px;
+  }
+
+  /* pequeno efeito ao passar o mouse */
+  .btn-blue-red:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+  }
+
+  /* foco acessível (teclado) */
+  .btn-blue-red:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0,123,255,0.18);
+  }
+  .banner {
+  position: relative;
+  overflow: hidden;
+}
+
+.banner {
+  position: relative;
+  overflow: hidden;
+}
+
+#particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.banner-text {
+  position: relative;
+  z-index: 2;
+}
+#voltar-topo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #004595;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  display: none;
+  transition: 0.3s;
+}
+
+#voltar-topo:hover {
+  background: #d30000;
+}
+
+/* ===== TRANSIÇÃO DE PÁGINA ===== */
+#page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  animation: fadeOut 1s ease forwards;
+  animation-delay: 1.5s; /* tempo antes de sumir */
+}
+
+.transition-logo {
+  width: 150px;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: logoPop 1s ease forwards;
+}
+
+/* Animação da logo aparecendo */
+@keyframes logoPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animação do fundo desaparecendo */
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+/* ===== MENU HAMBÚRGUER ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 2000; /* fica acima do menu */
+}
+
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background: #004595;
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: 0.4s;
+}
+
+/* Estado ativo (quando o menu abre) */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 220px;
+    background: white;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 80px 20px;
+    gap: 20px;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    transition: right 0.4s ease;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links li a {
+    font-size: 18px;
+    color: #004595;
+  }
+
+  /* Oculta os dropdowns até clicar */
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .dropdown-menu a {
+    padding-left: 20px;
+  }
+}

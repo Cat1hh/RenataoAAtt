@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login do Aluno | EEEM Renato José da Costa Pacheco</title>
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <img src="Imagem/Logo.png" alt="Logo da Escola" class="logo">
+
+      <h2>Portal do Aluno</h2>
+      <p>Entre com seu nome e número de aluno</p>
+
+      <form id="loginForm">
+        <!-- Nome do aluno -->
+        <div class="input-group">
+          <label for="usuario">Nome Completo</label>
+          <input type="text" id="usuario" placeholder="Ex: João Silva" required>
+        </div>
+
+        <!-- Senha = número do aluno -->
+        <div class="input-group">
+          <label for="senha">Número do Aluno</label>
+          <input type="text" id="senha" placeholder="Digite o número do aluno" required>
+        </div>
+
+        <button type="submit" class="btn-login">Entrar</button>
+      </form>
+
+      <div class="extra-links">
+        <a href="cadastro_aluno.html">Cadastrar-se</a>
+        <a href="index.html">← Voltar ao site</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const nomeCompleto = document.getElementById("usuario").value.trim();
+      const numeroAluno = document.getElementById("senha").value.trim();
+
+      if (nomeCompleto.split(" ").length < 2) {
+        alert("Por favor, digite seu nome completo.");
+        return;
+      }
+
+      try {
+        const res = await fetch("http://localhost:3000/api/loginAluno", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ nome_completo: nomeCompleto, numero_aluno: numeroAluno })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          localStorage.setItem("alunoLogado", JSON.stringify(data));
+          alert(`Bem-vindo(a), ${data.nome_aluno}!`);
+          window.location.href = "portal.html";
+        } else {
+          alert(data.error || "Aluno ou número incorreto. Tente novamente.");
+        }
+      } catch (err) {
+        console.error("Erro no login:", err);
+        alert("Erro ao conectar ao servidor. Tente novamente mais tarde.");
+      }
+    });
+  </script>
+</body>
+</html>

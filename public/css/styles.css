@@ -1,0 +1,792 @@
+/* ===== RESET BÁSICO ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background: #f9f9f9;
+  color: #333;
+}
+
+/* ===== HEADER E NAVBAR ===== */
+header {
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+}
+
+.logo img {
+  height: 60px;
+  width: auto;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #004595;
+  transition: 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #d30000; /* destaque no hover */
+          transform: translateY(-5px);  /* efeito flutuante */
+  box-shadow: 0 10px 50px rgba(80, 16, 16, 0.25);
+}
+
+/* ===== DROPDOWN MENU ===== */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  list-style: none;
+  padding: 10px 0;
+  border-radius: 5px;
+  min-width: 180px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  background: #f2f2f2;
+  color: #004595;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .banner {
+    height: auto;
+  }
+
+  .banner-img {
+    object-fit: contain;
+  }
+}
+
+
+
+/* ===== SEÇÕES ===== */
+section {
+  padding: 6px 1px;
+  text-align: center;
+  border-bottom: 0px solid #004595;
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #004595;
+}
+
+
+
+/* ===== RODAPÉ ===== */
+footer {
+  background: #004595;
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+
+footer .redes a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+}
+
+footer .redes a:hover {
+  text-decoration: underline;
+}
+
+footer .copy {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+
+
+/* ==== CARDS ==== */
+.cards-escola {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.card {
+  background: #f7f9fc;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+    transform: translateY(-5px);  /* efeito flutuante */
+  box-shadow: 0 10px 50px rgba(145, 3, 3, 0.25);
+}
+
+.card i {
+  font-size: 40px;
+  color: #004595;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  font-size: 22px;
+  color: #004595;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 🔹 logo à esquerda, menu mais centralizado */
+  padding: 10px 80px;
+}
+
+nav {
+  flex: 1; /* 🔹 ocupa espaço entre logo e canto direito */
+  display: flex;
+  justify-content: center; /* 🔹 centraliza o menu */
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center; /* 🔹 centraliza os itens no meio */
+  gap: 40px; /* 🔹 espaço entre os itens */
+  padding: 0;
+  margin: 0;
+}
+/* ====== Estilos Gerais (PC e telas grandes) ====== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+header, nav, section, footer {
+  max-width: 12000px;
+  margin: 0 auto;
+}
+
+/* ====== Responsividade ====== */
+
+/* Tablets e celulares médios (até 992px) */
+@media (max-width: 992px) {
+  nav ul {
+    display: flex;
+    gap: 20px;
+    font-size: 16px;
+  }
+
+  section {
+    padding: 20px;
+  }
+}
+
+/* Celulares (até 768px) */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  section {
+    padding: 15px;
+    text-align: center;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Celulares pequenos (até 480px) */
+@media (max-width: 480px) {
+  nav ul {
+    font-size: 14px;
+    gap: 10px;
+  }
+
+  h1, h2, h3 {
+    font-size: 1.2em;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  footer {
+    font-size: 12px;
+    text-align: center;
+    padding: 10px;
+  }
+}
+.titulo-novidades {
+  font-size: 2.4rem;
+  color: #003a91;
+  font-weight: 700;
+  position: relative;
+  margin-bottom: 20px;
+}
+.titulo-novidades::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background-color: #006eff;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+.intro-novidades {
+  color: #444;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 850px;
+  margin: 0 auto 60px;
+  text-align: justify;
+}
+
+.novidades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 35px;
+}
+.carrossel-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 50px auto;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  position: relative;
+  background: #f5f5f5;
+}
+
+.carrossel {
+  position: relative;
+  width: 100%;
+  height: 550px;
+}
+
+.slide {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
+}
+
+.info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(255, 62, 62, 0.849);
+  color: #fff;
+  padding: 20px;
+  border-radius: 0 0 20px 20px;
+  backdrop-filter: blur(5px);
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+.info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.info p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Botões */
+.controles {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.controles button {
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.controles button:hover {
+  background: rgba(0, 69, 149, 0.8);
+}
+
+/* Indicadores */
+.indicadores {
+  text-align: center;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  z-index: 3;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: #ddd;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.4s;
+}
+
+.dot.active {
+  background-color: #004595;
+}
+
+/* Partículas */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+
+/* ==== CARDS ==== */
+.cards-escola {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.card {
+  background: #f7f9fc;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+    transform: translateY(-5px);  /* efeito flutuante */
+  box-shadow: 0 10px 50px rgba(145, 3, 3, 0.25);
+}
+
+.card i {
+  font-size: 40px;
+  color: #004595;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  font-size: 22px;
+  color: #004595;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+/* ===== CARDS DE NOTÍCIAS ===== */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  width: 280px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+.banner {
+  position: relative;
+  overflow: hidden;
+}
+
+#particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.banner-text {
+  position: relative;
+  z-index: 2;
+}
+
+
+
+/* ===== TRANSIÇÃO DE PÁGINA ===== */
+#page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  animation: fadeOut 1s ease forwards;
+  animation-delay: 1.5s; /* tempo antes de sumir */
+}
+
+.transition-logo {
+  width: 150px;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: logoPop 1s ease forwards;
+}
+
+/* Animação da logo aparecendo */
+@keyframes logoPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animação do fundo desaparecendo */
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+
+
+#missao-visao-valores h2 {
+  font-size: 2.2rem;
+  color: #004595;
+  margin-bottom: 40px;
+  text-align: center; /* Garante centralização mesmo se o pai mudar */
+}
+
+#missao-visao-valores .cards-escola {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* ===== MURAL DE AVISOS ===== */
+.mural-avisos {
+  width: 100%;
+  max-width: 1000px;
+  margin: 40px auto;
+  overflow: hidden;
+  position: relative;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  background: #fff;
+}
+
+/* Container principal */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Faixa de slides */
+.carousel-slide {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Cada imagem */
+.carousel-slide a {
+  min-width: 100%;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* ===== Botões de navegação ===== */
+.carousel-prev,
+.carousel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 0, 0, 0.7);
+  color: #fff;
+  border: none;
+  font-size: 30px;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+  background-color: rgba(255, 0, 0, 0.9);
+}
+
+.carousel-prev {
+  left: 15px;
+}
+
+.carousel-next {
+  right: 15px;
+}
+
+/* ===== Bolinhas (indicadores) ===== */
+.carousel-dots {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  text-align: center;
+}
+
+.carousel-dots span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-dots span.active {
+  background-color: #ff0000;
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 768px) {
+  .mural-avisos {
+    border-radius: 10px;
+  }
+
+  .carousel-prev,
+  .carousel-next {
+    font-size: 24px;
+    padding: 8px 12px;
+  }
+
+  .carousel-dots span {
+    width: 10px;
+    height: 10px;
+    margin: 0 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-prev,
+  .carousel-next {
+    font-size: 20px;
+    padding: 6px 10px;
+  }
+
+  .carousel-dots {
+    bottom: 10px;
+  }
+
+  .carousel-dots span {
+    width: 8px;
+    height: 8px;
+  }
+}
+/* ===== MENU HAMBÚRGUER ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 2000; /* fica acima do menu */
+}
+
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background: #004595;
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: 0.4s;
+}
+
+/* Estado ativo (quando o menu abre) */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 220px;
+    background: white;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 80px 20px;
+    gap: 20px;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    transition: right 0.4s ease;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links li a {
+    font-size: 18px;
+    color: #004595;
+  }
+
+  /* Oculta os dropdowns até clicar */
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .dropdown-menu a {
+    padding-left: 20px;
+  }
+}

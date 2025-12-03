@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel do Professor | Escola Renato Pacheco</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-blue-900 to-blue-600 min-h-screen font-[Poppins] text-gray-900">
+
+  <nav class="bg-white shadow-md p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold text-[#004595]">📘 Painel do Professor</h1>
+    <button id="logout" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition">Sair</button>
+  </nav>
+
+  <main class="max-w-5xl mx-auto mt-10 bg-white rounded-2xl shadow-lg p-6">
+    <h2 class="text-2xl font-bold text-center text-[#004595] mb-4">Alunos Cadastrados</h2>
+    <p cl   ass="text-center text-gray-600 mb-6">Atribua as notas das provas e do trimestre</p>
+<section class="bg-white shadow-md rounded-xl p-6 mb-8">
+  <h3 class="text-xl font-semibold mb-4 text-[#004595]">📋 Alunos da sua Turma</h3>
+  <table class="w-full mt-6 border-collapse text-sm">
+    <thead class="bg-[#004595] text-white">
+      <tr>
+        <th class="py-2 px-3 text-left">Aluno</th>
+        <th class="py-2 px-3 text-left">Turma</th>
+        <th class="py-2 px-3 text-left">Nota Prova</th>
+        <th class="py-2 px-3 text-left">Nota Trimestre</th>
+        <th class="py-2 px-3 text-right">Salvar</th>
+      </tr>
+    </thead>
+    <tbody id="tabelaNotas"></tbody>
+  </table>
+</section>
+
+<script>
+const professor = JSON.parse(localStorage.getItem("professorLogado"));
+if (!professor) {
+  alert("Sessão expirada. Faça login novamente.");
+  window.location.href = "login_professor.html";
+}
+
+// Carrega alunos da turma
+async function carregarAlunosProfessor() {
+  try {
+    const res = await fetch("/api/alunos");
+    const alunos = await res.json();
+    const tabela = document.getElementById("tabelaNotas");
+    tabela.innerHTML = "";
+
+    alunos.forEach(a => {
+      tabela.innerHTML += `
+        <tr class="border-b">
+          <td class="py-2 px-3">${a.nome_aluno}</td>
+          <td class="py-2 px-3">${a.turma_nome}</td>
+          <td class="py-2 px-3"><input type="number" id="trimestre-${a.id}" value="${a.trimestre ?? ''}" class="border p-1 w-20 rounded text-center"></td>
+          <td class="py-2 px-3 text-right">
+            <button onclick="salvarNota(${a.id})" class="bg-[#004595] hover:bg-blue-800 text-white px-3 py-1 rounded">Salvar</button>
+          </td>
+        </tr>`;
+    });
+  } catch (err) {
+    alert("Erro ao carregar alunos.");
+  }
+}
+
+async function salvarNota(aluno_id) {
+  const nota = parseFloat(document.getElementById(`trimestre-${aluno_id}`).value);
+  if (isNaN(nota) || nota < 0 || nota > 10) {
+    alert("A nota deve estar entre 0 e 10.");
+    return;
+  }
+
+  try {
+    const res = await fetch("/api/professor/adicionarNota", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ aluno_id, disciplina: professor.disciplina, nota })
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error);
+    alert("Nota salva com sucesso!");
+    carregarAlunosProfessor();
+  } catch (err) {
+    alert("Erro ao salvar nota.");
+  }
+}
+
+document.getElementById("logout").addEventListener("click", () => {
+  localStorage.removeItem("professorLogado");
+  window.location.href = "login_professor.html";
+});
+
+carregarAlunosProfessor();
+</script>
+
+
+
+
+  
+</body>
+</html>

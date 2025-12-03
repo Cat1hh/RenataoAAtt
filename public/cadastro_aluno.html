@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Aluno | EEEM Renato José da Costa Pacheco</title>
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <img src="Imagem/Logo.png" alt="Logo da Escola" class="logo">
+
+      <h2>Cadastro de Aluno</h2>
+      <p>Preencha seus dados corretamente para criar seu acesso</p>
+
+      <form id="cadastroForm">
+        <!-- Nome -->
+        <div class="input-group">
+          <label for="nomeAluno">Nome Completo</label>
+          <input type="text" id="nomeAluno" placeholder="Digite seu nome completo" required>
+        </div>
+
+        <!-- Turma -->
+        <div class="input-group">
+          <label for="turmaAluno">Turma</label>
+          <select id="turmaAluno" required>
+            <option value="">Selecione sua turma</option>
+          </select>
+        </div>
+
+        <!-- E-mail do aluno -->
+        <div class="input-group">
+          <label for="emailAluno">E-mail do Aluno</label>
+          <input type="email" id="emailAluno" placeholder="exemplo@aluno.com" required>
+        </div>
+
+        <!-- E-mail do responsável -->
+        <div class="input-group">
+          <label for="emailResponsavel">E-mail do Responsável</label>
+          <input type="email" id="emailResponsavel" placeholder="exemplo@gmail.com" required>
+        </div>
+
+        <!-- Telefone do responsável -->
+        <div class="input-group">
+          <label for="telefoneResponsavel">Telefone do Responsável</label>
+          <input type="tel" id="telefoneResponsavel" placeholder="(27) 99999-9999" required>
+        </div>
+
+        <!-- Telefone do aluno -->
+        <div class="input-group">
+          <label for="telefoneAluno">Telefone do Aluno</label>
+          <input type="tel" id="telefoneAluno" placeholder="(27) 99999-9999" required>
+        </div>
+
+        <!-- Nome do responsável -->
+        <div class="input-group">
+          <label for="nomeResponsavel">Nome do Responsável</label>
+          <input type="text" id="nomeResponsavel" placeholder="Nome completo do responsável" required>
+        </div>
+
+        <!-- Termo de responsabilidade -->
+        <div class="input-group termo">
+          <input type="checkbox" id="aceitarTermo" required>
+          <label for="aceitarTermo">
+            Eu confirmo que todas as informações fornecidas são verdadeiras. 
+            Estou ciente de que, caso sejam identificadas informações falsas, 
+            uma <strong>ocorrência disciplinar</strong> poderá ser registrada.
+          </label>
+        </div>
+
+        <button type="submit" class="btn-login">Cadastrar</button>
+      </form>
+
+      <div class="extra-links">
+        <a href="login.html">← Voltar ao login</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // =============================
+    // 🔹 Carregar turmas do banco
+    // =============================
+    async function carregarTurmas() {
+      try {
+        const res = await fetch("http://localhost:3000/api/turmas");
+        const turmas = await res.json();
+
+        const select = document.getElementById("turmaAluno");
+        turmas.forEach(t => {
+          const opt = document.createElement("option");
+          opt.value = t.id;
+          opt.textContent = t.nome;
+          select.appendChild(opt);
+        });
+      } catch (err) {
+        console.error("Erro ao carregar turmas:", err);
+        alert("Erro ao carregar as turmas. Tente novamente mais tarde.");
+      }
+    }
+
+    // =============================
+    // 🔹 Enviar dados do cadastro
+    // =============================
+    document.getElementById("cadastroForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const termoAceito = document.getElementById("aceitarTermo").checked;
+
+      const aluno = {
+        turma_id: document.getElementById("turmaAluno").value,
+        nome_aluno: document.getElementById("nomeAluno").value.trim(),
+        nome_responsavel: document.getElementById("nomeResponsavel").value.trim(),
+        email_responsavel: document.getElementById("emailResponsavel").value.trim(),
+        email_aluno: document.getElementById("emailAluno").value.trim(),
+        telefone_responsavel: document.getElementById("telefoneResponsavel").value.trim(),
+        telefone_aluno: document.getElementById("telefoneAluno").value.trim(),
+        termo_aceito: termoAceito
+      };
+
+      if (!termoAceito) {
+        alert("Você deve aceitar o termo de responsabilidade para continuar.");
+        return;
+      }
+
+      try {
+        const res = await fetch("http://localhost:3000/api/alunos", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(aluno)
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          alert("✅ Cadastro realizado com sucesso! Aguarde a confirmação da escola.");
+          window.location.href = "login.html";
+        } else {
+          alert("❌ " + (data.error || "Erro ao cadastrar. Tente novamente."));
+        }
+      } catch (err) {
+        console.error("Erro no envio:", err);
+        alert("Erro ao enviar os dados. Verifique sua conexão com o servidor.");
+      }
+    });
+
+    carregarTurmas();
+  </script>
+</body>
+</html>

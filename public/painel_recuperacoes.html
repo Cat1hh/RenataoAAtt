@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alunos em Recuperação | Escola Renato Pacheco</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+  <div class="max-w-5xl mx-auto mt-10 bg-white rounded-xl shadow p-6">
+    <h1 class="text-2xl font-bold text-[#004595] mb-4 text-center">📚 Alunos em Recuperação</h1>
+    <table class="w-full border-collapse">
+      <thead class="bg-[#004595] text-white">
+        <tr>
+          <th class="py-2 px-3 text-left">Aluno</th>
+          <th class="py-2 px-3 text-left">Turma</th>
+          <th class="py-2 px-3 text-left">Disciplina</th>
+          <th class="py-2 px-3 text-left">Nota</th>
+          <th class="py-2 px-3 text-left">Data</th>
+        </tr>
+      </thead>
+      <tbody id="tabelaRecuperacao"></tbody>
+    </table>
+  </div>
+
+  <script>
+  async function carregarRecuperacoes() {
+    const res = await fetch("/api/recuperacoes");
+    const recuperacoes = await res.json();
+    const tabela = document.getElementById("tabelaRecuperacao");
+    tabela.innerHTML = "";
+
+    if (!recuperacoes.length) {
+      tabela.innerHTML = `<tr><td colspan="5" class="text-center py-4 text-gray-500">Nenhum aluno em recuperação.</td></tr>`;
+      return;
+    }
+
+    recuperacoes.forEach(r => {
+      tabela.innerHTML += `
+        <tr class="border-b">
+          <td class="py-2 px-3">${r.nome_aluno}</td>
+          <td class="py-2 px-3">${r.turma_nome}</td>
+          <td class="py-2 px-3">${r.disciplina}</td>
+          <td class="py-2 px-3">${r.nota}</td>
+          <td class="py-2 px-3">${new Date(r.data_registro).toLocaleDateString()}</td>
+        </tr>`;
+    });
+  }
+
+  carregarRecuperacoes();
+  </script>
+</body>
+</html>

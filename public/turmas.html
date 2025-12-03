@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horário das Turmas</title>
+  <link rel="stylesheet" href="css/turmas.css">
+</head>
+<body>
+  <header>
+    <h1>Horários das Turmas</h1>
+    <p>Selecione sua turma para ver o horário completo</p>
+  </header>
+
+  <main class="container">
+    <div class="turma-select">
+      <label for="turma">Turma:</label>
+      <select id="turma">
+        <option value="">Selecione...</option>
+      </select>
+    </div>
+
+    <div class="table-container">
+      <table id="tabela-horarios">
+        <thead>
+          <tr>
+            <th>Dia</th>
+            <th>Horário</th>
+            <th>Disciplina</th>
+            <th>Sala</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="4">Selecione uma turma acima.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="buttons">
+      <button class="voltar" onclick="voltarPortal()">← Voltar ao Portal</button>
+      <button class="admin" onclick="window.location.href='admin.html'">⚙️ Editar Tabela (Admin)</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 - EEEM Renato José da Costa Pacheco</p>
+  </footer>
+
+  <script src="js/turmas.js"></script>
+</body>
+</html>
